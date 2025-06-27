@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package TugasATM;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -17,6 +18,19 @@ public class TarikTunai extends javax.swing.JFrame {
     public TarikTunai() {
         initComponents();
     }
+    private void tarikUang(int jumlah) {
+    if (MenuUtama.saldo < 50000) {
+        JOptionPane.showMessageDialog(this, "Saldo tidak mencukupi. Minimal Rp 50.000", "Gagal", JOptionPane.WARNING_MESSAGE);
+    } else if (jumlah > MenuUtama.saldo) {
+        JOptionPane.showMessageDialog(this, "Nominal melebihi saldo!", "Gagal", JOptionPane.WARNING_MESSAGE);
+    } else if ((MenuUtama.saldo - jumlah) < 50000) {
+        JOptionPane.showMessageDialog(this, "Sisa saldo setelah penarikan harus minimal Rp 50.000", "Gagal", JOptionPane.WARNING_MESSAGE);
+    } else {
+        MenuUtama.saldo -= jumlah;
+        JOptionPane.showMessageDialog(this, "Penarikan berhasil!\nSaldo tersisa: Rp " + MenuUtama.saldo);
+    }
+}
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -27,21 +41,154 @@ public class TarikTunai extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btn1jt = new javax.swing.JButton();
+        btn5jt = new javax.swing.JButton();
+        btnback = new javax.swing.JToggleButton();
+        lbljumlah = new javax.swing.JLabel();
+        btn50 = new javax.swing.JButton();
+        btn100 = new javax.swing.JButton();
+        btn300 = new javax.swing.JButton();
+        btn500 = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        btn1jt.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        btn1jt.setText("1.000.000");
+        btn1jt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn1jtActionPerformed(evt);
+            }
+        });
+
+        btn5jt.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        btn5jt.setText("5.000.000");
+        btn5jt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn5jtActionPerformed(evt);
+            }
+        });
+
+        btnback.setText("Back");
+        btnback.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnbackActionPerformed(evt);
+            }
+        });
+
+        lbljumlah.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lbljumlah.setText("Opsi Penarikan :");
+
+        btn50.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        btn50.setText("50.000");
+        btn50.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn50ActionPerformed(evt);
+            }
+        });
+
+        btn100.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        btn100.setText("100.000");
+        btn100.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn100ActionPerformed(evt);
+            }
+        });
+
+        btn300.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        btn300.setText("300.000");
+        btn300.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn300ActionPerformed(evt);
+            }
+        });
+
+        btn500.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        btn500.setText("500.000");
+        btn500.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn500ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(75, 75, 75)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btn300, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btn50, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btn1jt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 115, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btn500, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn100, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn5jt, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGap(96, 96, 96))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(51, 51, 51)
+                        .addComponent(lbljumlah))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(170, 170, 170)
+                        .addComponent(btnback, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(69, Short.MAX_VALUE)
+                .addComponent(lbljumlah)
+                .addGap(42, 42, 42)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn50)
+                    .addComponent(btn100))
+                .addGap(38, 38, 38)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn500)
+                    .addComponent(btn300))
+                .addGap(31, 31, 31)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn1jt)
+                    .addComponent(btn5jt))
+                .addGap(29, 29, 29)
+                .addComponent(btnback)
+                .addGap(57, 57, 57))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btn1jtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn1jtActionPerformed
+        tarikUang(1000000);
+    }//GEN-LAST:event_btn1jtActionPerformed
+
+    private void btn5jtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn5jtActionPerformed
+        tarikUang(5000000);
+    }//GEN-LAST:event_btn5jtActionPerformed
+
+    private void btnbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbackActionPerformed
+        this.setVisible(false);
+        new MenuUtama().setVisible(true);
+    }//GEN-LAST:event_btnbackActionPerformed
+
+    private void btn50ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn50ActionPerformed
+        tarikUang(50000);
+    }//GEN-LAST:event_btn50ActionPerformed
+
+    private void btn100ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn100ActionPerformed
+        tarikUang(100000);
+    }//GEN-LAST:event_btn100ActionPerformed
+
+    private void btn300ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn300ActionPerformed
+        tarikUang(300000);
+    }//GEN-LAST:event_btn300ActionPerformed
+
+    private void btn500ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn500ActionPerformed
+        tarikUang(500000);
+    }//GEN-LAST:event_btn500ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -69,6 +216,13 @@ public class TarikTunai extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(TarikTunai.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -79,5 +233,13 @@ public class TarikTunai extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn100;
+    private javax.swing.JButton btn1jt;
+    private javax.swing.JButton btn300;
+    private javax.swing.JButton btn50;
+    private javax.swing.JButton btn500;
+    private javax.swing.JButton btn5jt;
+    private javax.swing.JToggleButton btnback;
+    private javax.swing.JLabel lbljumlah;
     // End of variables declaration//GEN-END:variables
 }

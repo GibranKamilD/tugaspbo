@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package TugasATM;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -27,21 +28,117 @@ public class Transfer extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
+        txtrekening = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        txtjumlah = new javax.swing.JTextField();
+        btntransfer = new javax.swing.JButton();
+        btnback = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel1.setText("Nomor Rekening");
+
+        txtrekening.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtrekeningActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel2.setText("Jumlah Transfer");
+
+        txtjumlah.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtjumlahActionPerformed(evt);
+            }
+        });
+
+        btntransfer.setText("Transfer");
+        btntransfer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btntransferActionPerformed(evt);
+            }
+        });
+
+        btnback.setText("Back");
+        btnback.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnbackActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(97, 97, 97)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnback, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(btntransfer, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel2)
+                        .addComponent(jLabel1)
+                        .addComponent(txtrekening, javax.swing.GroupLayout.DEFAULT_SIZE, 266, Short.MAX_VALUE)
+                        .addComponent(txtjumlah)))
+                .addContainerGap(88, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(65, 65, 65)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addComponent(txtrekening, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel2)
+                .addGap(18, 18, 18)
+                .addComponent(txtjumlah, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(53, 53, 53)
+                .addComponent(btntransfer)
+                .addGap(18, 18, 18)
+                .addComponent(btnback)
+                .addContainerGap(77, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txtrekeningActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtrekeningActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtrekeningActionPerformed
+
+    private void txtjumlahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtjumlahActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtjumlahActionPerformed
+
+    private void btntransferActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btntransferActionPerformed
+        String rek=txtrekening.getText();
+        String jumlahStr=txtjumlah.getText();
+        try{
+            int jumlah=Integer.parseInt(jumlahStr);
+
+            if(rek.isEmpty()){
+                JOptionPane.showMessageDialog(this, "nomor rekening tujuan harus diisi!");
+            }else if(MenuUtama.saldo<50000){
+                JOptionPane.showMessageDialog(this, "saldo anda kurang dari Rp 50.000");
+            }else if(jumlah>MenuUtama.saldo){
+                JOptionPane.showMessageDialog(this, "saldo tidak mencukupi untuk transfer");
+            }else{
+                MenuUtama.saldo-=jumlah;
+                JOptionPane.showMessageDialog(this, "Transfer ke"+ rek +"sebesar Rp"+ jumlah +"berhasil!");
+            }
+        }catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(this, "masukkan jumlah yang valid!");
+        }
+    }//GEN-LAST:event_btntransferActionPerformed
+
+    private void btnbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbackActionPerformed
+        this.setVisible(false);
+        new MenuUtama().setVisible(true);
+    }//GEN-LAST:event_btnbackActionPerformed
 
     /**
      * @param args the command line arguments
@@ -79,5 +176,11 @@ public class Transfer extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnback;
+    private javax.swing.JButton btntransfer;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JTextField txtjumlah;
+    private javax.swing.JTextField txtrekening;
     // End of variables declaration//GEN-END:variables
 }
